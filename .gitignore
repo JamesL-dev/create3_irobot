@@ -6,3 +6,5 @@ resource/
 setup.cfg
 setup.py
 test/
+
+__pycache__/
