@@ -1,0 +1,8 @@
+build/
+install/
+log/
+package.xml
+resource/
+setup.cfg
+setup.py
+test/
