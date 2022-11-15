@@ -69,6 +69,7 @@ class RobotLogic():
         self.external_state = StateMachine(robot_id, mqtt_ip)
         self.internal_state = InternalState.OTHER
 
+        # Set goal destination
         goal_pose = PoseStamped()
         goal_pose.pose.position.x = 2.0
         goal_pose.pose.position.y = 2.0
@@ -84,6 +85,8 @@ class RobotLogic():
         self.reset_pose_driver = ResetPoseDriver(robot_id)
         self.undock_driver = UndockDriver(robot_id)
 
+    # Not using currently
+    # Checking bounds of borders
     def isInBounds(self):
         pos = self.all_robots.get_robot(self.robot_id).pose
         return True
@@ -109,6 +112,7 @@ class RobotLogic():
 
                 robot_position = robot.pose["position"]
 
+                # If predicted robot position overlaps with another robot then begin evasive maneuvers
                 if math.dist([predicted_position_x, predicted_position_y], [robot_position['x'], robot_position['y']]) <= 0.3419:
                     print("Collision detected")
                     self.collision_driver.start(math.pi / 2)
@@ -134,6 +138,7 @@ class RobotLogic():
             rclpy.spin_once(self.all_robots, timeout_sec=0)
             self.external_state.send_state_to_mqtt()
             
+            # debugging
             #print(self.internal_state)
 
 

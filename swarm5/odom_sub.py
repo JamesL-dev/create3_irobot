@@ -14,14 +14,6 @@ class OdomSub(Node):
         self.mqtt_client.connect(mqtt_ip)
         self.robot_id = robot_id
 
-        # QoS profile:
-        #   Reliability: BEST_EFFORT
-        #   History (Depth): KEEP_LAST (5)
-        #   Durability: VOLATILE
-        #   Lifespan: Infinite
-        #   Deadline: Infinite
-        #   Liveliness: AUTOMATIC
-        #   Liveliness lease duration: Infinite
         self.qos = QoSProfile(
             reliability=QoSReliabilityPolicy.BEST_EFFORT,
             history=QoSHistoryPolicy.KEEP_LAST,
