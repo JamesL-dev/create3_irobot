@@ -46,7 +46,7 @@ class CollisionDriver(rclpy.node.Node):
             if doneAngle:
                 self.collision_state = CollisionStates.DIDFIRSTTURN
                 # drive 0.5m
-                self.distance_driver.start(0.5)
+                self.distance_driver.start(0.2)
                 print("Evade!")
             
         elif self.collision_state == CollisionStates.DIDFIRSTTURN:
@@ -60,7 +60,7 @@ class CollisionDriver(rclpy.node.Node):
             if doneAngle:
                 self.collision_state = CollisionStates.DIDSECONDTURN
                 # go straight past robot
-                self.distance_driver.start(0.5)
+                self.distance_driver.start(0.2)
                 print("Show me your moves!")
             
         elif self.collision_state == CollisionStates.DIDSECONDTURN:
@@ -73,7 +73,7 @@ class CollisionDriver(rclpy.node.Node):
         elif self.collision_state == CollisionStates.DIDSECONDDRIVE:
             if doneAngle:
                 self.collision_state = CollisionStates.DIDTHIRDTURN
-                self.distance_driver.start(0.5)
+                self.distance_driver.start(0.2)
                 print("Not so fast!")
             
         elif self.collision_state == CollisionStates.DIDTHIRDTURN:

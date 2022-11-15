@@ -1,6 +1,7 @@
 import rclpy
 
 from robot import RobotLogic
+# Garret address 192.168.0.104
 
 def main(args=None):
     rclpy.init(args=args)
