@@ -18,8 +18,6 @@ class ActionHandler(rclpy.node.Node):
         self.done = True
 
     def start(self, *args, **kwargs):
-        # must define self._start() yourself, which returns a goal_msg
-        # must also define self._client which is a client for that action type
         self.goal_msg = self._start(*args, **kwargs)
 
         self.done, self.accepted = False, False
